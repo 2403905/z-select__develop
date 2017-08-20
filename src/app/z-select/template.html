@@ -1,0 +1,18 @@
+<div class="z-select__input" [title]="placeholder">
+  <input type="text" [value]="placeholder" [placeholder]="placeholder" readonly (focus)="openDropdown();">
+  <button class="z-select__input__toggle-btn" (click)="toggleDropdown();"></button>
+</div>
+
+<div class="z-select__dropdown" *ngIf="_isOpen">
+  <ul *ngIf="options && options.length; else optionsEmptyTpl" class="z-select__options-list">
+    <li *ngFor="let option of options; trackBy:trackByFn; let i = index;"
+        (mouseenter)="_hoverIndex = i"
+        [ngClass]="{'hover':i === _hoverIndex, 'selected':option.value === value}"
+        (click)="selectOptionHandler(option);">
+      {{option.label}}
+    </li>
+  </ul>
+
+  <ng-template #optionsEmptyTpl>Options list empty</ng-template>
+  <!--<pre>{{options|json:2}}</pre>-->
+</div>

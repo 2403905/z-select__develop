@@ -1,0 +1,100 @@
+$input-border-radius: 4px;
+$input-border-color: #DFE6EE;
+
+.z-select {
+  &__input {
+    display: block;
+    border: 1px solid $input-border-color;
+    border-radius: $input-border-radius;
+    position: relative;
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+      margin: 0;
+      display: block;
+      font-size: inherit;
+      font-family: inherit;
+      border-radius: $input-border-radius;
+      padding: 8px 40px 8px 16px;
+      line-height: 1.25;
+    }
+    &__toggle-btn {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      margin: auto;
+      width: 30px;
+      background: transparent;
+      border: none;
+      outline: none;
+      //border-left: 1px solid $input-border-color;
+      cursor: pointer;
+      padding: 0;
+      box-sizing: border-box;
+      &:before {
+        content: "";
+        border-color: darken($input-border-color, 20%) transparent transparent;
+        border-style: solid;
+        border-width: 5px 4px 0;
+        height: 0;
+        width: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 10px;
+  }
+
+  &__options-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    //border: 1px solid $input-border-color;
+    border-radius: $input-border-radius;
+    max-height: 198px;
+    overflow: auto;
+    overflow-x: hidden;
+    box-shadow: 0 2px 6px #B0BAC5;
+    background: #fff;
+    li{
+      padding: 8px 16px;
+      cursor: pointer;
+      margin: 0;
+      &.hover{
+        background: #F4F7FA;
+      }
+      &.selected{
+        background: darken(#F4F7FA, 7%);
+      }
+    }
+  }
+
+}
+
+:host {
+  display: block;
+  position: relative;
+  font-size: 14px;
+  &.is-above{
+    .z-select__dropdown{
+      bottom:100%;
+      top:auto;
+      margin-bottom:10px;
+      margin-top: 0;
+    }
+  }
+}
